@@ -1,7 +1,7 @@
 <template>
 <center>
   <div class="d-flex search-div">
-  <input type="text" class="bg-black form-control border-primary text-primary" id="search"  placeholder="search for songs">
+  <input type="text" v-model="search" class="bg-black form-control border-primary text-primary" id="search"  placeholder="search for songs">
   <button class="btn btn-primary" style="height: 40px; margin-left: -10px; margin-top: 20px;">Search</button>
   </div>
   <div class="d-flex pt-5" id="titles">      
@@ -9,7 +9,7 @@
   </div>
     <h6 class="text-white m-3">Seventeen Music Ug's hottest releases all available here</h6>
 <div class="container row mt-3">
-  <div class="col-md-4" v-for="song in songs" :key="song.id">
+  <div class="col-md-4" v-for="song in filteredSong" :key="song.id">
   <div class="m-2 bg-black rounded-3">
   <img class="images" :src="song.photo">
   <div class="p-3">
@@ -23,6 +23,9 @@
   </div>
 
   </div>
+  <div class="text-white m-5 p-5" v-if="filteredSong.length === 0">
+    Sorry We don't have that Song
+  </div>
 </div>
 </center>
 </template>
@@ -32,7 +35,7 @@ import axios from 'axios';
 
 export default {
 
-  name: 'TheWelcome',
+  name: 'HomeView',
   data(){
     return {
       search: '',
@@ -93,8 +96,12 @@ export default {
 
     }
   } ,
-  computed: {
-
+    computed: {
+     filteredSong(){
+      return this.songs.filter(song =>
+      song.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+     }
   },
   methods: {
     payViaService() {
