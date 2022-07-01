@@ -1,5 +1,9 @@
 <template>
 <center>
+  <div class="d-flex search-div">
+  <input type="text" class="bg-black form-control border-primary text-primary" id="search"  placeholder="search for songs">
+  <button class="btn btn-primary" style="height: 40px; margin-left: -10px; margin-top: 20px;">Search</button>
+  </div>
   <div class="d-flex pt-5" id="titles">      
   <h2 class="text-white"><b>Latest</b></h2><h2 class="text-primary" style="margin-left: 10px;"><b>Songs</b></h2>
   </div>
@@ -31,6 +35,7 @@ export default {
   name: 'TheWelcome',
   data(){
     return {
+      search: '',
       songs: [
         {
           id: 1,
@@ -88,6 +93,9 @@ export default {
 
     }
   } ,
+  computed: {
+
+  },
   methods: {
     payViaService() {
       this.payWithFlutterwave(this.paymentData) 
@@ -101,10 +109,8 @@ export default {
     generateReference(){
       let date = new Date()
       return date.getTime().toString();
-    }
-
-  },
-  downloadSong() {
+    },
+      downloadSong() {
     console.log("download starting here")
               axios({
                     url: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3',
@@ -120,7 +126,9 @@ export default {
    
                      fileLink.click();
                 });
-          }
+          },
+
+  },
 }
 </script>
 <style>
@@ -130,10 +138,22 @@ export default {
 .images{
   width: 100%; height: 390px;
 }
+#search{
+  width: 500px; margin-top: 20px;
+}
+.search-div{
+  margin-left: 30vw;
+}
 @media only screen and (max-width: 600px) {
   #titles{
     margin-left: 30vw;
   }
+  .search-div{
+  margin-left: 28px;
+}
+  #search{
+  width: 280px; margin-top: 20px;
+}
   .images {
     height: 330px;
   }
