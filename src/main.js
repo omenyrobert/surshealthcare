@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.js"
 import Vue from 'vue'
 import VueCompositionAPI, { createApp, h } from '@vue/composition-api'
 import Flutterwave from  'flutterwave-vue-v3'
