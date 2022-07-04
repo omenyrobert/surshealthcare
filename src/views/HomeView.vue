@@ -1,166 +1,337 @@
 <template>
-<center>
-  <div class="d-flex search-div">
-  <input type="text" v-model="search" class="bg-black form-control border-primary text-primary" id="search"  placeholder="search for songs">
-  <button class="btn btn-primary" style="height: 40px; margin-left: -10px; margin-top: 20px;">Search</button>
-  </div>
-  <div class="d-flex pt-5" id="titles">      
-  <h2 class="text-white"><b>Latest</b></h2><h2 class="text-primary" style="margin-left: 10px;"><b>Songs</b></h2>
-  </div>
-    <h6 class="text-white m-3">Seventeen Music Ug's hottest releases all available here</h6>
-<div class="container row mt-3">
-  <div class="col-md-4" v-for="song in filteredSong" :key="song.id">
-  <div class="m-2 bg-black rounded-3">
-  <img class="images" :src="song.photo">
-  <div class="p-3">
-    <div class="d-flex" style="justify-content: space-between;">
-      <p style="color: #fff;" @click="downloadSong">{{song.name}}</p>
-      <p class="text-primary">New</p>
-  <h6 style="color: #fff;">UGX: {{song.amount}}</h6>
+  <center>
+    <div class="bg-black w-100">
+      <div class="" style="width: 95%">
+        <div style="display: flex; justify-content: space-between">
+          <div
+            class="mt-2"
+            style="display: flex; justify-content: space-between"
+          >
+            <i id="iconss" class="bi bi-twitter fs-5 m-2 text-white"></i>
+            <i class="bi bi-instagram fs-5 m-2 text-white"></i>
+            <i id="iconss" class="bi bi-facebook fs-5 m-2 text-white"></i>
+            <i class="bi bi-youtube fs-5 m-2 text-white"></i>
+            <i id="iconss" class="bi bi-apple fs-5 m-2 text-white"></i>
+            <i id="iconss" class="bi bi-spotify fs-5 m-2 text-white"></i>
+          </div>
+          <div>
+            <h2 id="main-title" class="text-white fst-italic mt-3" style="font-weight: bold">
+              Seventeen Music Ug
+            </h2>
+          </div>
+          <div style="display: flex; justify-content: space-between">
+            <i
+              id="account"
+              class="bi bi-person-fill fs-5 text-white"
+            ></i>
+            <i class="bi bi-list fs-2 m-2 text-white"></i>
+          </div>
+        </div>
+      </div>
+      <div class="container row">
+       <div class="col-md-6">
+        <h1 class="text-primary" id="banner-title"><b>Nabagereka</b></h1>
+       </div>
+       <div class="col-md-6">
+        <img class="w-100" src="https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png" alt="">
+       </div>
+      </div>
     </div>
-    <button class="border-primary btn btn-dark bg-black text-primary" @click="payViaService">Buy Now</button>
-  </div>
-  </div>
+    <div class="d-flex search-div">
+      <input
+        type="text"
+        v-model="search"
+        class="bg-black form-control border-primary text-primary"
+        id="search"
+        placeholder="search for songs"
+      />
+      <button
+        class="btn btn-primary"
+        style="height: 40px; margin-left: -10px; margin-top: 20px"
+      >
+        Search
+      </button>
+    </div>
+    <!-- // latest songs  -->
+    <div class="d-flex pt-5" id="titles">
+      <h2 class="text-white"><b>Latest</b></h2>
+      <h2 class="text-primary" style="margin-left: 10px"><b>Songs</b></h2>
+    </div>
+    <h6 class="text-white m-3">
+      Seventeen Music Ug's hottest releases all available here
+    </h6>
+    <div class="container row mt-3">
+      <div class="col-md-4" v-for="song in filteredSong" :key="song.id">
+        <div class="m-2 bg-black rounded-3">
+          <img class="images" :src="song.photo" />
+          <div class="p-3">
+            <div class="d-flex" style="justify-content: space-between">
+              <p style="color: #fff" @click="downloadSong">{{ song.name }}</p>
+              <p class="text-primary">New</p>
+              <h6 style="color: #fff">UGX: {{ song.amount }}</h6>
+            </div>
+            <button
+              class="border-primary btn btn-dark bg-black text-primary"
+              @click="payViaService"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="text-white m-5 p-5" v-if="filteredSong.length === 0">
+        Sorry We don't have that Song
+      </div>
+    </div>
+    <div class="w-100 bg-black mt-3">
+        <!-- // updates  -->
+        <div class="d-flex pt-5" id="titles">
+      <h2 class="text-white"><b>Latest</b></h2>
+      <h2 class="text-primary" style="margin-left: 10px"><b>Updates</b></h2>
+    </div>
 
-  </div>
-  <div class="text-white m-5 p-5" v-if="filteredSong.length === 0">
-    Sorry We don't have that Song
-  </div>
-</div>
-</center>
+        <div class="container row mt-3">
+      <div class="col-md-4" v-for="song in updates" :key="song.id">
+        <div class="m-2 rounded-3" style="background-color: #1a1a1a;">
+          <img class="images" :src="song.photo" />
+          <div class="p-3">
+            <div class="d-flex" style="justify-content: space-between">
+              <p style="color: #fff">{{ song.name }}</p>
+              <h6></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- // gallery -->
+       <div class="d-flex pt-5" id="titles">
+      <h2 class="text-white"><b>Our</b></h2>
+      <h2 class="text-primary" style="margin-left: 10px"><b>Gallery</b></h2>
+    </div>
+        <div class="container row mt-3">
+      <div class="col-md-4" v-for="song in gallery" :key="song.id">
+        <div class="m-2 bg-black rounded-3">
+          <img class="images" :src="song.photo" />
+        </div>
+      </div>
+    </div>
+  </center>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-
-  name: 'HomeView',
-  data(){
+  name: "HomeView",
+  data() {
     return {
-      search: '',
+      search: "",
       songs: [
         {
           id: 1,
           name: "Girl Like You",
           amount: 1000,
-          audioMusic: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3',
-          photo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg"
+          audioMusic:
+            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
         },
-                {
+        {
           id: 2,
           name: "Nsonyiwa",
           amount: 1000,
-          audioMusic: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667008/Kallery/seventeenmusic/m2_l37vlz.mp3',
-          photo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg"
+          audioMusic:
+            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667008/Kallery/seventeenmusic/m2_l37vlz.mp3",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
         },
-                {
+        {
           id: 3,
           name: "Nkooye",
           amount: 1000,
-          audioMusic: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667087/Kallery/seventeenmusic/m3_jyk2hz.mp3',
-          photo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg"
+          audioMusic:
+            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667087/Kallery/seventeenmusic/m3_jyk2hz.mp3",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
         },
-                {
+        {
           id: 4,
           name: "Nabagereka",
           amount: 1000,
-          audioMusic: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667091/Kallery/seventeenmusic/m4_ciuup3.mp3',
-          photo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg"
-        }
+          audioMusic:
+            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667091/Kallery/seventeenmusic/m4_ciuup3.mp3",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
+        },
+      ],
+      gallery: [
+        {
+          id: 1,
+          name: "Girl Like You",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
+        },
+        {
+          id: 2,
+          name: "Nsonyiwa",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
+        },
+        {
+          id: 3,
+          name: "Nkooye",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
+        },
+        {
+          id: 4,
+          name: "Nabagereka",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
+        },
+      ],
+      updates: [
+        {
+          id: 1,
+          name: "Interview at NBS",
+          amount: 1000,
+          audioMusic:
+            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
+        },
+        {
+          id: 2,
+          name: "Freedom city party",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
+        },
+        {
+          id: 3,
+          name: "Nkooye Launch",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
+        },
+        {
+          id: 4,
+          name: "Charity giving",
+          photo:
+            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
+        },
       ],
       paymentData: {
         tx_ref: this.generateReference(),
         amount: 1000,
-        currency: 'UGX',
-        public_key: 'FLWPUBK_TEST-8c1f4d871cb37a96bb33191bbcb6cdcb-X',
-        payment_options: 'mobilemoney',
-        redirect_url: '',
+        currency: "UGX",
+        public_key: "FLWPUBK_TEST-8c1f4d871cb37a96bb33191bbcb6cdcb-X",
+        payment_options: "mobilemoney",
+        redirect_url: "",
         meta: {
-          'counsumer_id': '7898',
-          'consumer_mac': 'kjs9s8ss7dd'
+          counsumer_id: "7898",
+          consumer_mac: "kjs9s8ss7dd",
         },
         customer: {
-          name: 'Demo Customer  Name',
-          email: 'customer@mail.com',
-          phone_number: '081845***044'
-        } ,
+          name: "Demo Customer  Name",
+          email: "customer@mail.com",
+          phone_number: "081845***044",
+        },
         customizations: {
-          title: 'Customization Title',
-          description: 'Customization Description',
-          logo: 'https://flutterwave.com/images/logo-colored.svg'
+          title: "Customization Title",
+          description: "Customization Description",
+          logo: "https://flutterwave.com/images/logo-colored.svg",
         },
         callback: this.makePaymentCallback,
-        onclose: this.closedPaymentModal
-      }
-
-    }
-  } ,
-    computed: {
-     filteredSong(){
-      return this.songs.filter(song =>
-      song.name.toLowerCase().includes(this.search.toLowerCase())
+        onclose: this.closedPaymentModal,
+      },
+    };
+  },
+  computed: {
+    filteredSong() {
+      return this.songs.filter((song) =>
+        song.name.toLowerCase().includes(this.search.toLowerCase())
       );
-     }
+    },
   },
   methods: {
     payViaService() {
-      this.payWithFlutterwave(this.paymentData) 
-    } ,
+      this.payWithFlutterwave(this.paymentData);
+    },
     makePaymentCallback(response) {
-      console.log("Pay", response)
+      console.log("Pay", response);
     },
     closedPaymentModal() {
-      console.log('payment is closed');
+      console.log("payment is closed");
     },
-    generateReference(){
-      let date = new Date()
+    generateReference() {
+      let date = new Date();
       return date.getTime().toString();
     },
-      downloadSong() {
-    console.log("download starting here")
-              axios({
-                    url: 'https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3',
-                    method: 'GET',
-                    responseType: 'blob',
-                }).then((response) => {
-                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-                     var fileLink = document.createElement('a');
-   
-                     fileLink.href = fileURL;
-                     fileLink.setAttribute('download', 'file.mp3');
-                     document.body.appendChild(fileLink);
-   
-                     fileLink.click();
-                });
-          },
+    downloadSong() {
+      console.log("download starting here");
+      axios({
+        url: "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
+        method: "GET",
+        responseType: "blob",
+      }).then((response) => {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileLink = document.createElement("a");
 
+        fileLink.href = fileURL;
+        fileLink.setAttribute("download", "file.mp3");
+        document.body.appendChild(fileLink);
+
+        fileLink.click();
+      });
+    },
   },
-}
+};
 </script>
 <style>
-#titles{
+#titles {
   margin-left: 45vw;
 }
-.images{
-  width: 100%; height: 390px;
+.images {
+  width: 100%;
+  height: 390px;
 }
-#search{
-  width: 500px; margin-top: 20px;
+#account{
+  margin-right: 20px;
+  margin-top: 15px;
 }
-.search-div{
+#search {
+  width: 500px;
+  margin-top: 20px;
+}
+.search-div {
   margin-left: 30vw;
 }
+#banner-title{
+  margin-top: 50%;
+  font-size: 60px;
+}
 @media only screen and (max-width: 600px) {
-  #titles{
+  #account{
+  margin-right: 2px;
+  margin-top: 13px;
+}
+  #main-title{
+    font-size: 18px;
+  }
+  #iconss{
+    display: none;
+  }
+  #titles {
     margin-left: 30vw;
   }
-  .search-div{
-  margin-left: 28px;
-}
-  #search{
-  width: 280px; margin-top: 20px;
-}
+  .search-div {
+    margin-left: 28px;
+  }
+  #search {
+    width: 280px;
+    margin-top: 20px;
+  }
   .images {
     height: 330px;
   }
