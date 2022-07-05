@@ -15,7 +15,7 @@
             <i id="iconss" class="bi bi-spotify fs-5 m-2 text-white"></i>
           </div>
           <div>
-            <h2 id="main-title" class="text-white fst-italic mt-3" style="font-weight: bold">
+            <h2 id="main-title" class="text-white fst-italic mt-3" style="font-weight: bold; font-family: cursive;">
               Seventeen Music Ug
             </h2>
           </div>
@@ -29,11 +29,22 @@
         </div>
       </div>
       <div class="container row">
+        <div class="col-md-6">
+          <div id="banner-title">
+<h1 class="fst-italic text-primary mt-3" style="font-weight: bold;">
+              Seventeen Music Ug
+            </h1>
+            <h5 class="text-white" style="font-family: cursive;">Buy and be the first one to listen and enjoy our music</h5>
+          </div>
+        </div>
        <div class="col-md-6">
-        <h1 class="text-primary" id="banner-title"><b>Nabagereka</b></h1>
-       </div>
-       <div class="col-md-6">
-        <img class="w-100" src="https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png" alt="">
+  <img class="w-100" src="https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png" alt="">
+            <div id="banner-title2">
+<h1 class="fst-italic text-primary mt-3" style="font-weight: bold;">
+              Seventeen Music Ug
+            </h1>
+            <h5 class="text-white" style="font-family: cursive;">Buy and be the first one to listen and enjoy our music</h5>
+          </div>
        </div>
       </div>
     </div>
@@ -117,6 +128,7 @@
         </div>
       </div>
     </div>
+    <div class="bg-black p-3 mt-4 p-3">All rights reserved Seventeen music Ug</div>
   </center>
 </template>
 
@@ -233,14 +245,14 @@ export default {
           consumer_mac: "kjs9s8ss7dd",
         },
         customer: {
-          name: "Demo Customer  Name",
+          name: "Customer  Name",
           email: "customer@mail.com",
           phone_number: "081845***044",
         },
         customizations: {
-          title: "Customization Title",
-          description: "Customization Description",
-          logo: "https://flutterwave.com/images/logo-colored.svg",
+          title: "Seventeen Music Ug",
+          description: "Pay Using mobile money and download",
+          logo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png",
         },
         callback: this.makePaymentCallback,
         onclose: this.closedPaymentModal,
@@ -270,20 +282,20 @@ export default {
     },
     downloadSong() {
       console.log("download starting here");
-      axios({
-        url: "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
-        method: "GET",
-        responseType: "blob",
-      }).then((response) => {
-        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-        var fileLink = document.createElement("a");
+      // axios({
+      //   url: "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
+      //   method: "GET",
+      //   responseType: "blob",
+      // }).then((response) => {
+      //   var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+      //   var fileLink = document.createElement("a");
 
-        fileLink.href = fileURL;
-        fileLink.setAttribute("download", "file.mp3");
-        document.body.appendChild(fileLink);
+      //   fileLink.href = fileURL;
+      //   fileLink.setAttribute("download", "file.mp3");
+      //   document.body.appendChild(fileLink);
 
-        fileLink.click();
-      });
+      //   fileLink.click();
+      // });
     },
   },
 };
@@ -307,9 +319,22 @@ export default {
 .search-div {
   margin-left: 30vw;
 }
+ #main-title{
+    font-size: 40px;
+    
+  }
+  #banner-title2{
+    display: none;
+  }
 #banner-title{
-  margin-top: 50%;
-  font-size: 60px;
+  animation: shake 2s;
+  animation-iteration-count: infinite;
+  margin-top: 15vw; margin-left: 5vw;
+}
+@keyframes shake {
+              0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-20px);} 
+            60% {transform: translateY(-15px);} 
 }
 @media only screen and (max-width: 600px) {
   #account{
@@ -317,7 +342,17 @@ export default {
   margin-top: 13px;
 }
   #main-title{
-    font-size: 18px;
+    font-size: 20px;
+    
+  }
+    #banner-title2{
+    animation: shake 2s;
+    animation-iteration-count: infinite;
+    display: inline;
+    margin-top: 150px;
+    margin-left: -85vw;
+    width: 90%;
+    position: absolute;
   }
   #iconss{
     display: none;
@@ -325,6 +360,9 @@ export default {
   #titles {
     margin-left: 30vw;
   }
+  #banner-title{
+ display: none;
+}
   .search-div {
     margin-left: 28px;
   }
