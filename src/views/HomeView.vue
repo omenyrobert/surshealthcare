@@ -83,7 +83,7 @@
             </div>
             <button
               class="border-primary btn btn-dark bg-black text-primary"
-              @click="payViaService"
+              @click="payViaService(song)"
             >
               Buy Now
             </button>
@@ -139,6 +139,7 @@ export default {
   name: "HomeView",
   data() {
     return {
+      selectedSong: null,
       search: "",
       songs: [
         {
@@ -267,11 +268,28 @@ export default {
     },
   },
   methods: {
-    payViaService() {
+    payViaService(song) {
       this.payWithFlutterwave(this.paymentData);
+      console.log('Song Id',song)
+      this.selectedSong = song
     },
     makePaymentCallback(response) {
       console.log("Pay", response);
+      const song = this.selectedSong
+       axios({
+        url: song.audioMusic,
+        method: "GET",
+        responseType: "blob",
+      }).then((response) => {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileLink = document.createElement("a");
+
+        fileLink.href = fileURL;
+        fileLink.setAttribute("download", `${song.name}.mp3`);
+        document.body.appendChild(fileLink);
+
+        fileLink.click();
+      });
     },
     closedPaymentModal() {
       console.log("payment is closed");
