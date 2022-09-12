@@ -9,7 +9,7 @@ import App from './App.vue'
 import router from './router'
 
 Vue.use(VueCompositionAPI)
-Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TESTXXXXXXXXXX' } )
+Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-8bbf151f0a00f25b000c67a6a6befb2a-X' } )
 const app = createApp({
   router,
   render: () => h(App)

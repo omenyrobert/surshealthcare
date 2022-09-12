@@ -1,8 +1,7 @@
 <script setup>
 </script>
-
 <template>
-  <div style="background-color: #1a1a1a;">
+  <div style="background-color: #fff;">
     <router-view />
   </div>
 </template>

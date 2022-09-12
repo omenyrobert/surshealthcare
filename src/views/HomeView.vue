@@ -1,91 +1,27 @@
 <template>
   <center>
-    <div class="bg-black w-100">
-      <div class="" style="width: 95%">
-        <div style="display: flex; justify-content: space-between">
-          <div
-            class="mt-2"
-            style="display: flex; justify-content: space-between"
-          >
-            <i id="iconss" class="bi bi-twitter fs-5 m-2 text-white"></i>
-            <i class="bi bi-instagram fs-5 m-2 text-white"></i>
-            <i id="iconss" class="bi bi-facebook fs-5 m-2 text-white"></i>
-            <i class="bi bi-youtube fs-5 m-2 text-white"></i>
-            <i id="iconss" class="bi bi-apple fs-5 m-2 text-white"></i>
-            <i id="iconss" class="bi bi-spotify fs-5 m-2 text-white"></i>
-          </div>
-          <div>
-            <h2 id="main-title" class="text-white fst-italic mt-3" style="font-weight: bold; font-family: cursive;">
-              Seventeen Music Ug
-            </h2>
-          </div>
-          <div style="display: flex; justify-content: space-between">
-            <i
-              id="account"
-              class="bi bi-person-fill fs-5 text-white"
-            ></i>
-            <i class="bi bi-list fs-2 m-2 text-white"></i>
-          </div>
-        </div>
-      </div>
-      <div class="container row">
-        <div class="col-md-6">
-          <div id="banner-title">
-<h1 class="fst-italic text-primary mt-3" style="font-weight: bold;">
-              Seventeen Music Ug
-            </h1>
-            <h5 class="text-white" style="font-family: cursive;">Buy and be the first one to listen and enjoy our music</h5>
-          </div>
-        </div>
-       <div class="col-md-6">
-  <img class="w-100" src="https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png" alt="">
-            <div id="banner-title2">
-<h1 class="fst-italic text-primary mt-3" style="font-weight: bold;">
-              Seventeen Music Ug
-            </h1>
-            <h5 class="text-white" style="font-family: cursive;">Buy and be the first one to listen and enjoy our music</h5>
-          </div>
-       </div>
-      </div>
-    </div>
-    <div class="d-flex search-div">
-      <input
-        type="text"
-        v-model="search"
-        class="bg-black form-control border-primary text-primary"
-        id="search"
-        placeholder="search for songs"
-      />
-      <button
-        class="btn btn-primary"
-        style="height: 40px; margin-left: -10px; margin-top: 20px"
-      >
-        Search
-      </button>
-    </div>
+
     <!-- // latest songs  -->
+    <div class="flex p-3" style="background-color: #991108;"><a style=" color: #fff; text-decoration: none;" href="https://surshealthcare.org/">E-laboratory</a><a style=" color: #fff; text-decoration: none; margin-left: 30px;;" href="https://drugs.surshealthcare.org/">E-Pharmacy</a></div>
     <div class="d-flex pt-5" id="titles">
-      <h2 class="text-white"><b>Latest</b></h2>
-      <h2 class="text-primary" style="margin-left: 10px"><b>Songs</b></h2>
+      <h2 class="text-primary" style="margin-left: 10px"><b>All Doctors</b></h2>
     </div>
-    <h6 class="text-white m-3">
-      Seventeen Music Ug's hottest releases all available here
-    </h6>
     <div class="container row mt-3">
       <div class="col-md-4" v-for="song in filteredSong" :key="song.id">
-        <div class="m-2 bg-black rounded-3">
-          <img class="images" :src="song.photo" />
-          <div class="p-3">
-            <div class="d-flex" style="justify-content: space-between">
-              <p style="color: #fff" @click="downloadSong">{{ song.name }}</p>
-              <p class="text-primary">New</p>
-              <h6 style="color: #fff">UGX: {{ song.amount }}</h6>
+        <div class="m-2 rounded-3">
+          <div style="height: 255px;">
+          <img class="img-fluid img-thumbnail" :src="song.photo" />
+          </div>
+          <div class="p-3" style="background-color: #9becfa;">
+            <div class="d-flex" style="justify-content: space-between;">
+              <p style="color: #000" @click="downloadSong">{{ song.name }}</p>
+              <p class="text-primary">All Available</p>
             </div>
             <button
-              class="border-primary btn btn-dark bg-black text-primary"
+              class="border-primary btn btn-dark bg-primary text-white"
               @click="payViaService(song)"
             >
-              Buy Now
+              Pay for Consultation
             </button>
           </div>
         </div>
@@ -94,41 +30,6 @@
         Sorry We don't have that Song
       </div>
     </div>
-    <div class="w-100 bg-black mt-3">
-        <!-- // updates  -->
-        <div class="d-flex pt-5" id="titles">
-      <h2 class="text-white"><b>Latest</b></h2>
-      <h2 class="text-primary" style="margin-left: 10px"><b>Updates</b></h2>
-    </div>
-
-        <div class="container row mt-3">
-      <div class="col-md-4" v-for="song in updates" :key="song.id">
-        <div class="m-2 rounded-3" style="background-color: #1a1a1a;">
-          <img class="images" :src="song.photo" />
-          <div class="p-3">
-            <div class="d-flex" style="justify-content: space-between">
-              <p style="color: #fff">{{ song.name }}</p>
-              <h6></h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <!-- // gallery -->
-       <div class="d-flex pt-5" id="titles">
-      <h2 class="text-white"><b>Our</b></h2>
-      <h2 class="text-primary" style="margin-left: 10px"><b>Gallery</b></h2>
-    </div>
-        <div class="container row mt-3">
-      <div class="col-md-4" v-for="song in gallery" :key="song.id">
-        <div class="m-2 bg-black rounded-3">
-          <img class="images" :src="song.photo" />
-        </div>
-      </div>
-    </div>
-    <div class="bg-black p-3 mt-4 p-3">All rights reserved Seventeen music Ug</div>
   </center>
 </template>
 
@@ -144,102 +45,47 @@ export default {
       songs: [
         {
           id: 1,
-          name: "Girl Like You",
-          amount: 1000,
-          audioMusic:
-            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
+          name: "Dr Natuhwera Precious",
           photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-01-at-3.59.45-PM.jpeg",
         },
         {
           id: 2,
-          name: "Nsonyiwa",
-          amount: 1000,
-          audioMusic:
-            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667008/Kallery/seventeenmusic/m2_l37vlz.mp3",
+          name: "Mutale Geoffrey",
           photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/07/h6-1024x683.jpg",
         },
         {
           id: 3,
-          name: "Nkooye",
-          amount: 1000,
-          audioMusic:
-            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667087/Kallery/seventeenmusic/m3_jyk2hz.mp3",
+          name: "Dr Nelson Onen",
           photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/07/h6-1024x683.jpg",
         },
         {
           id: 4,
-          name: "Nabagereka",
-          amount: 1000,
-          audioMusic:
-            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656667091/Kallery/seventeenmusic/m4_ciuup3.mp3",
+          name: "Cedrak Ategeka",
           photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/07/IMG_0331-1024x683.jpg",
+        },
+        {
+          id: 5,
+          name: "Jacob Ogwang",
+          photo:
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/07/IMG_0331-1024x683.jpg",
+        },
+        {
+          id: 6,
+          name: "Dr Acidri Henry",
+          photo:
+            "https://drugs.surshealthcare.org/wp-content/uploads/2022/07/IMG_0265-1024x683.jpg",
         },
       ],
-      gallery: [
-        {
-          id: 1,
-          name: "Girl Like You",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
-        },
-        {
-          id: 2,
-          name: "Nsonyiwa",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
-        },
-        {
-          id: 3,
-          name: "Nkooye",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
-        },
-        {
-          id: 4,
-          name: "Nabagereka",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
-        },
-      ],
-      updates: [
-        {
-          id: 1,
-          name: "Interview at NBS",
-          amount: 1000,
-          audioMusic:
-            "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658457/Kallery/seventeenmusic/WhatsApp_Image_2022-06-26_at_7.55.29_AM_fqghzv.jpg",
-        },
-        {
-          id: 2,
-          name: "Freedom city party",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658285/Kallery/seventeenmusic/s2_qynpuc.jpg",
-        },
-        {
-          id: 3,
-          name: "Nkooye Launch",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656658065/Kallery/seventeenmusic/s2_p9izel.jpg",
-        },
-        {
-          id: 4,
-          name: "Charity giving",
-          photo:
-            "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656657292/Kallery/seventeenmusic/s1_bfk6on.jpg",
-        },
-      ],
+
       paymentData: {
         tx_ref: this.generateReference(),
-        amount: 1000,
+        amount: 35000,
         currency: "UGX",
-        public_key: "FLWPUBK_TEST-8c1f4d871cb37a96bb33191bbcb6cdcb-X",
-        payment_options: "mobilemoney",
+        payment_options: "mobilemoney,ussd",
         redirect_url: "",
         meta: {
           counsumer_id: "7898",
@@ -251,9 +97,9 @@ export default {
           phone_number: "081845***044",
         },
         customizations: {
-          title: "Seventeen Music Ug",
-          description: "Pay Using mobile money and download",
-          logo: "https://res.cloudinary.com/dtlkiv19d/image/upload/v1656922199/Kallery/seventeenmusic/back2_vpstxs.png",
+          title: "Surshealthcare",
+          description: "Pay the best doctors' consultations",
+          logo: "https://drugs.surshealthcare.org/wp-content/uploads/elementor/thumbs/cropped-full_BMIhRHOt-prxxa4642c4ffdttdu6fxtrn6r8ztweowh9u618l4k.webp",
         },
         callback: this.makePaymentCallback,
         onclose: this.closedPaymentModal,
@@ -270,26 +116,14 @@ export default {
   methods: {
     payViaService(song) {
       this.payWithFlutterwave(this.paymentData);
-      console.log('Song Id',song)
-      this.selectedSong = song
+      this.selectedSong = song;
     },
     makePaymentCallback(response) {
-      console.log("Pay", response);
+      if(response.status==='successful'){
+        console.log("Pay", response);
       const song = this.selectedSong
-       axios({
-        url: song.audioMusic,
-        method: "GET",
-        responseType: "blob",
-      }).then((response) => {
-        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-        var fileLink = document.createElement("a");
-
-        fileLink.href = fileURL;
-        fileLink.setAttribute("download", `${song.name}.mp3`);
-        document.body.appendChild(fileLink);
-
-        fileLink.click();
-      });
+      this.$router.push(`/about/${song.id}`);
+      }
     },
     closedPaymentModal() {
       console.log("payment is closed");
@@ -300,20 +134,6 @@ export default {
     },
     downloadSong() {
       console.log("download starting here");
-      // axios({
-      //   url: "https://res.cloudinary.com/dtlkiv19d/video/upload/v1656665568/Kallery/seventeenmusic/m1_cyotkp.mp3",
-      //   method: "GET",
-      //   responseType: "blob",
-      // }).then((response) => {
-      //   var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-      //   var fileLink = document.createElement("a");
-
-      //   fileLink.href = fileURL;
-      //   fileLink.setAttribute("download", "file.mp3");
-      //   document.body.appendChild(fileLink);
-
-      //   fileLink.click();
-      // });
     },
   },
 };
@@ -323,8 +143,8 @@ export default {
   margin-left: 45vw;
 }
 .images {
-  width: 100%;
-  height: 390px;
+  max-width:100%;
+  max-height: 100%;
 }
 #account{
   margin-right: 20px;
@@ -387,9 +207,6 @@ export default {
   #search {
     width: 280px;
     margin-top: 20px;
-  }
-  .images {
-    height: 330px;
   }
 }
 </style>
